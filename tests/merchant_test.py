@@ -8,3 +8,4 @@ class TestMerchant(unittest.TestCase):
 
     def test_merchant_has_name(self):
         self.assertEqual("Aldi", self.merchant.name)
+

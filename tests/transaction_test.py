@@ -1,12 +1,12 @@
 import unittest
-from models.transactions import Transactions
+from models.transaction import Transactions
 from models.merchant import Merchant
 from models.tag import Tag
 
 class TestTransaction(unittest.TestCase):
 
     def setUp(self):
-        self.transaction = Transactions(12.00, "Tesco", "Groceries")
+        self.transaction = Transactions("Tesco", "Groceries", 12.00)
 
     def test_transaction_has_amount(self):
         self.assertEqual(12.00, self.transaction.amount)
