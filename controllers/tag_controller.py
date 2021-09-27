@@ -15,3 +15,5 @@ def show(id):
     tag = tag_repository.select(id)
     merchants = tag_repository.merchants(tag)
     return render_template("tags/show.html", tag = tag, merchants = merchants)
+
+
