@@ -10,12 +10,22 @@ def merchants():
     merchants = merchant_repository.select_all()
     return render_template("merchants/index.html", merchants = merchants)
 
+# SHOW
 @merchants_blueprint.route("/merchants/<id>")
 def show(id):
     merchant = merchant_repository.select(id)
     tags = merchant_repository.tags(merchant)
     return render_template("merchants/show.html", merchant = merchant, tags = tags)
-    
 
+# NEW
+@merchants_blueprint.route("/merchants/new")
+def new_merchant():
+    return render_template("merchants/new.html")
 
-
+# CREATE
+@merchants_blueprint.route("/merchants", methods=['POST'])
+def create_merchant():
+    name = request.form["name"]
+    new_merchant = Merchant(name)
+    merchant_repository.save(new_merchant)
+    return redirect('/merchants')

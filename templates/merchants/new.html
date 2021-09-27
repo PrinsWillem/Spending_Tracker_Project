@@ -4,8 +4,12 @@
 
 <h1>Add a new Merchant</h1>
 
-    <label for="merchant">Add Merchant:</label>
-        <input type="text" name="name">
+<form action="/merchants" method="POST">
+    <div>
+        <label for="name">Add Merchant:</label>
+        <input type="text" id="name" name="name">
         <input type="submit" value="add Merchant">
+    </div>
+</form>
 
 {% endblock %}
