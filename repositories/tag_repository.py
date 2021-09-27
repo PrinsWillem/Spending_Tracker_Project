@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.tag import Tag
+from models.merchant import Merchant
 
 def save(tag):
     sql = "INSERT INTO tags (name) VALUES (%s) RETURNING *"
@@ -43,5 +44,15 @@ def update(tag):
     values = [tag.name, tag.id]
     run_sql(sql, values)
 
+def merchants(tag):
+    merchants = []
+    sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE tag_id = %s"
+    values = [tag.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        merchant = Merchant(row['name'], row['id'])
+        merchants.append(merchant)
+    return merchants
 
 

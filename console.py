@@ -7,6 +7,7 @@ import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repository as transactions_repository
 
+transactions_repository.delete_all()
 merchant_repository.delete_all()
 tag_repository.delete_all()
 
@@ -21,6 +22,8 @@ tag2 = Tag('Entertainment')
 tag_repository.save(tag2)
 
 transaction1 = Transaction(merchant1, tag1, 35.00)
+transactions_repository.save(transaction1)
 transaction2 = Transaction(merchant2, tag2, 10.00)
+transactions_repository.save(transaction2)
 
 pdb.set_trace()

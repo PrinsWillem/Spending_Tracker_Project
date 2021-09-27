@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{ merchant.name }} </h1>
+
+<h3>Categories:</h3>
+
+<ul>
+    {% for tag in tags  %}
+    <li>{{tag.name}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
