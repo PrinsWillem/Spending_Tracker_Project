@@ -34,16 +34,6 @@ def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)
 
-def delete(id):
-    sql = "DELETE FROM tags WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
-
-def update(tag):
-    sql = "UPDATE tags SET (name) = (%s) WHERE id = %s"
-    values = [tag.name, tag.id]
-    run_sql(sql, values)
-
 def merchants(tag):
     merchants = []
     sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON transactions.merchant_id = merchants.id WHERE tag_id = %s"
@@ -54,5 +44,15 @@ def merchants(tag):
         merchant = Merchant(row['name'], row['id'])
         merchants.append(merchant)
     return merchants
+
+# def delete(id):
+#     sql = "DELETE FROM tags WHERE id = %s"
+#     values = [id]
+#     run_sql(sql, values)
+
+# def update(tag):
+#     sql = "UPDATE tags SET (name) = (%s) WHERE id = %s"
+#     values = [tag.name, tag.id]
+#     run_sql(sql, values)
 
 

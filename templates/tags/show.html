@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{ tag.name }} </h1>
+
+<h3>Merchant:</h3>
+<ul>
+    {% for merchant in merchans  %}
+        <li> {{ merchant.name}} </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

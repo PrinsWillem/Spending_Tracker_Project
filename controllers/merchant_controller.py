@@ -8,7 +8,6 @@ merchants_blueprint = Blueprint("merchants", __name__)
 @merchants_blueprint.route("/merchants")
 def merchants():
     merchants = merchant_repository.select_all()
-    # pdb.set_trace()
     return render_template("merchants/index.html", merchants = merchants)
 
 @merchants_blueprint.route("/merchants/<id>")
