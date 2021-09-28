@@ -4,9 +4,10 @@
 <h1> {{ tag.name }} </h1>
 
 <h3>Merchant:</h3>
+
 <ul>
-    {% for merchant in merchants  %}
-        <li> {{ merchant.name}} </li>
+    {% for merchant in unique_merchants  %}
+        <li> {{ merchant }} </li>
     {% endfor %}
 </ul>
 

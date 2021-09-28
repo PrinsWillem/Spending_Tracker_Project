@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, redirect
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
+import repositories.transaction_repository as transaction_repository
 import pdb
 
 merchants_blueprint = Blueprint("merchants", __name__)
@@ -15,7 +16,15 @@ def merchants():
 def show(id):
     merchant = merchant_repository.select(id)
     tags = merchant_repository.tags(merchant)
-    return render_template("merchants/show.html", merchant = merchant, tags = tags)
+    tag_names = []
+    for tag in tags:
+        tag_names.append(tag.name)
+    unique_tags = []
+    for tag in tag_names:
+         if tag not in unique_tags:
+             unique_tags.append(tag)
+    # pdb.set_trace()
+    return render_template("merchants/show.html", merchant = merchant, unique_tags = unique_tags)
 
 # NEW
 @merchants_blueprint.route("/merchants/new")
