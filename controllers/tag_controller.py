@@ -24,8 +24,13 @@ def show(id):
     for merchant in merchant_names:
         if merchant not in unique_merchants:
             unique_merchants.append(merchant)
+    all_transactions = transaction_repository.select_all()
+    total_categories_spent = 0
+    for transaction in all_transactions:
+        if transaction.tag.name == tag.name:
+            total_categories_spent += transaction.amount
     # pdb.set_trace()
-    return render_template("tags/show.html", tag = tag, unique_merchants = unique_merchants)
+    return render_template("tags/show.html", tag = tag, unique_merchants = unique_merchants, total_categories_spent = total_categories_spent)
 
 # NEW
 @tags_blueprint.route("/tags/new")
