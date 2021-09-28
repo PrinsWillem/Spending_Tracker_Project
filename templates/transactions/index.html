@@ -4,7 +4,7 @@
 <h1>Transactions</h1>
 
 <p>
-    Total Spent: ${{ total_spent }}
+    Total Spent: £{{ '%0.2f'| format(total_spent|float) }}
 </p>
 
 
@@ -16,7 +16,7 @@
     {% for transaction in transactions %}
     <li>
         <p> {{ transaction.merchant.name }} - {{ transaction.tag.name }} </p>
-        <p><i>${{ transaction.amount }}</i></p>
+        <p><i>£{{ '%0.2f'| format(transaction.amount|float) }}</i></p>
         <p>
             <form action="/transactions/{{ transaction.id }}/delete" method="POST">
             <input type="submit" value="delete">

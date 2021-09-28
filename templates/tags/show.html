@@ -4,17 +4,15 @@
 <h1> {{ tag.name }} </h1>
 
 <p>
-    Total Spent: ${{ total_categories_spent }}
+    Total Spent: £{{ '%0.2f'| format(total_categories_spent|float) }}
 </p>
 
 <h3>Merchant:</h3>
 
 <ul>
-    {% for merchant in unique_merchants  %}
-        <li> {{ merchant }} </li>
+    {% for merchant, amount in merchant_amounts.items() %}
+        <li> {{ merchant }} - £{{ '%0.2f'| format(amount|float) }} </li>
     {% endfor %}
 </ul>
-
-
 
 {% endblock %}

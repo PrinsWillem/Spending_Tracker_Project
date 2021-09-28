@@ -16,21 +16,26 @@ def tags():
 @tags_blueprint.route("/tags/<id>")
 def show(id):
     tag = tag_repository.select(id)
-    merchants = tag_repository.merchants(tag)
-    merchant_names = []
-    for merchant in merchants:
-        merchant_names.append(merchant.name)
-    unique_merchants = []
-    for merchant in merchant_names:
-        if merchant not in unique_merchants:
-            unique_merchants.append(merchant)
+    # merchants = tag_repository.merchants(tag)
+    # merchant_names = []
+    # for merchant in merchants:
+    #     merchant_names.append(merchant.name)
+    # unique_merchants = []
+    # for merchant in merchant_names:
+    #     if merchant not in unique_merchants:
+    #         unique_merchants.append(merchant)
+    merchant_amounts = {}
     all_transactions = transaction_repository.select_all()
     total_categories_spent = 0
     for transaction in all_transactions:
         if transaction.tag.name == tag.name:
             total_categories_spent += transaction.amount
+            if transaction.merchant.name not in merchant_amounts:
+                merchant_amounts[transaction.merchant.name] = 0
+            merchant_amount = merchant_amounts[transaction.merchant.name]
+            merchant_amounts[transaction.merchant.name] = merchant_amount + transaction.amount
     # pdb.set_trace()
-    return render_template("tags/show.html", tag = tag, unique_merchants = unique_merchants, total_categories_spent = total_categories_spent)
+    return render_template("tags/show.html", tag = tag, merchant_amounts = merchant_amounts, total_categories_spent = total_categories_spent)
 
 # NEW
 @tags_blueprint.route("/tags/new")

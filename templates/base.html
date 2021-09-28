@@ -6,26 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spending Tracker</title>
 
-    <link rel="stylesheet" href="static/css/style.css"> 
-    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
     <main>
 
-        <nav>
-            <ul>
-                <li>
-                    <a href="/merchants">Merchants</a>
-                </li>
-                <li>
-                    <a href="/tags">Categories</a>
-                </li>
-                <li>
-                    <a href="/transactions">Transactions</a>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <a href="#main-menu"
+                id="main-menu-toggle"
+                class="menu-toggle"
+                aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                <span class="fa fa-bars" style="font-size:24px"  aria-hidden="true"></span>         
+            </a>
+            
+            <h1 class="logo">Money Pouch</h1>
+
+            <img src="static/images/Money_pouch_logo.png" id="money_pouch_logo" alt="Money_pouch_logo">
+              
+            <nav id="main-menu" class="main-menu" aria-label="Main menu">
+                <a href="#main-menu-toggle"
+                   id="main-menu-close"
+                   class="menu-close"
+                   aria-label="Close main menu">
+                  <span class="sr-only">Close main menu</span>
+                  <span class="fa fa-close" aria-hidden="true"></span>
+                </a>
+                <ul>
+                    <li><a href="/transactions">Transactions</a></li>
+                    <li><a href="/merchants">Merchants</a></li>
+                    <li><a href="/tags">Categories</a></li>
+                </ul>
+            </nav>
+            <a href="#main-menu-toggle"
+               class="backdrop"
+               tabindex="-1"
+               aria-hidden="true" hidden></a>
+        </header>
         
         <section>
         {% block content %}
