@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<form action="/tags/{{tag.id}}" method="POST">
+    <div>
+        <label for="name"><h3>Categorie Name:</h3></label><br>
+        <input type="text" id="name" name="name" value="{{ tag.name }}" required autofocus>
+    </div>
+    <br>
+    <button type="submit">Update Tag</button>
+</form>
+
+{% endblock  %}
+

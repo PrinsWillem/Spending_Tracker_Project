@@ -51,7 +51,7 @@ def merchants(tag):
 #     run_sql(sql, values)
 
 def update(tag):
-    sql = "UPDATE tags SET (name) = (%s) WHERE id = %s"
+    sql = "UPDATE tags SET name = %s WHERE id = %s"
     values = [tag.name, tag.id]
     run_sql(sql, values)
 

@@ -15,14 +15,6 @@ def merchants():
 @merchants_blueprint.route("/merchants/<id>")
 def show(id):
     merchant = merchant_repository.select(id)
-    # tags = merchant_repository.tags(merchant)
-    # tag_names = []
-    # for tag in tags:
-    #     tag_names.append(tag.name)
-    # unique_tags = []
-    # for tag in tag_names:
-    #      if tag not in unique_tags:
-    #          unique_tags.append(tag)
     tag_amounts = {}
     all_transactions = transaction_repository.select_all()
     total_merchants_spent = 0
@@ -47,4 +39,19 @@ def create_merchant():
     name = request.form["name"]
     new_merchant = Merchant(name)
     merchant_repository.save(new_merchant)
+    return redirect('/merchants')
+
+# EDIT
+@merchants_blueprint.route("/merchants/<id>/edit", methods=['GET'])
+def edit_merchant(id):
+    merchant = merchant_repository.select(id)
+    return render_template('merchants/edit.html', merchant = merchant)
+
+# UPDATE
+@merchants_blueprint.route("/merchants/update/<id>", methods=['POST'])
+def update_merchant(id):
+    name = request.form["name"]
+    merchant = Merchant(name, int(id))
+    # pdb.set_trace()
+    merchant_repository.update(merchant)
     return redirect('/merchants')

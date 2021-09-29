@@ -10,13 +10,13 @@
     border: 0;
   }
   
-  /* Button styling */
+  /* Button styling  */
   .menu-toggle {
     display: inline-block;
     padding: .75em 15px;
     line-height: 1em;
     font-size: 1em;
-    color: #333;
+    color: #222121;
   }
   
   .menu-toggle:hover,
@@ -24,10 +24,6 @@
     color: #c00;
   }
   
-  /*
-   Default styles + Mobile first
-   Offscreen menu style
-  */
   .main-menu {
     position: absolute;
     display: none;
@@ -45,13 +41,12 @@
     list-style: none;
     margin: 0;
     padding: 2.5em 0 0;
-    /* Hide shadow w/ -8px while 'closed' */
     -webkit-box-shadow: -8px 0 8px rgba(0,0,0,.5);
        -moz-box-shadow: -8px 0 8px rgba(0,0,0,.5);
             box-shadow: -8px 0 8px rgba(0,0,0,.5);
     min-height: 100%;
     width: 200px;
-    background: #1a1a1a;
+    background: #222121;
   }
   
   .main-menu a {
@@ -101,10 +96,6 @@
   z-index: 1000;
 }
 
-/* 
- We could us `.main-menu:target:after`, but
- it wouldn't be clickable.
-*/
 .main-menu:target + .backdrop,
 .main-menu[aria-expanded="true"] + .backdrop{
   position: absolute;
@@ -127,9 +118,6 @@
   }
 }
 
-  /*
-   Demo purposes only
-  */
   *,
   *:before,
   *:after {
@@ -137,9 +125,7 @@
   }
   
   header {
-    padding: 20px;
-    display: flex;
-    align-items: baseline;
+    
   }
   
   article {
@@ -153,16 +139,28 @@
     font-weight: 500;
     font-size: 28px;
   }
-  
+  .menu{
+    margin-top:20px;
+  }
   .logo {
-    margin: 0 30px 0 10px;
+    float:left;
+    margin:0 15px 0 15px;
     font-size: 1.5em;
   }
+  .pouch-logo{
+    display:inline-block;
+    padding-top:10px;
+  }
+.pouch-logo img{
+  height:40px;
+}
 
   #money_pouch_logo{
-    height: 100px;
-    width: 100px;
+    height: 60px;
+    width: 60px;
     display: inline-block;
     position: relative;
     top: 35px;
   }
+
+  

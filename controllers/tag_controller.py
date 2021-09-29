@@ -16,14 +16,6 @@ def tags():
 @tags_blueprint.route("/tags/<id>")
 def show(id):
     tag = tag_repository.select(id)
-    # merchants = tag_repository.merchants(tag)
-    # merchant_names = []
-    # for merchant in merchants:
-    #     merchant_names.append(merchant.name)
-    # unique_merchants = []
-    # for merchant in merchant_names:
-    #     if merchant not in unique_merchants:
-    #         unique_merchants.append(merchant)
     merchant_amounts = {}
     all_transactions = transaction_repository.select_all()
     total_categories_spent = 0
@@ -48,4 +40,18 @@ def create_tag():
     name = request.form["name"]
     new_tag = Tag(name)
     tag_repository.save(new_tag)
+    return redirect('/tags')
+
+# EDIT
+@tags_blueprint.route("/tags/<id>/edit", methods=['GET'])
+def edit_tag(id):
+    tag = tag_repository.select(id)
+    return render_template('tags/edit.html', tag = tag)
+
+# UPDATE
+@tags_blueprint.route("/tags/<id>", methods=['POST'])
+def update_tag(id):
+    name = request.form["name"]
+    tag = Tag(name, int(id))
+    tag_repository.update(tag)
     return redirect('/tags')

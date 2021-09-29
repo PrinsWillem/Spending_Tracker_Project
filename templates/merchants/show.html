@@ -2,7 +2,8 @@
 
 {% block content %}
 <h1> {{ merchant.name }} </h1>
-
+<p><a href="/merchants/{{merchant.id}}/edit">Edit</a></p>
+<hr>
 <p>
     Total Spent: £{{ '%0.2f'| format(total_merchants_spent|float) }}
 </p>
