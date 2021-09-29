@@ -42,13 +42,8 @@ def merchants(tag):
 
     for row in results:
         merchant = Merchant(row['name'], row['id'])
-        merchants.append(merchant)
+        merchants.insert(0, merchant)
     return merchants
-
-# def delete(id):
-#     sql = "DELETE FROM tags WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
 
 def update(tag):
     sql = "UPDATE tags SET name = %s WHERE id = %s"
