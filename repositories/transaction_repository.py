@@ -20,7 +20,7 @@ def select_all():
         merchant = merchant_repositories.select(row['merchant_id'])
         tag = tag_repositories.select(row['tag_id'])
         transaction = Transaction(merchant, tag, row['amount'], row['id'])
-        transactions.append(transaction)
+        transactions.insert(0, transaction)
     return transactions
 
 def delete_all():
