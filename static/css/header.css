@@ -124,10 +124,6 @@
     box-sizing: border-box;
   }
   
-  header {
-    
-  }
-  
   article {
     padding: 30px;
     width: 55em;
@@ -142,10 +138,15 @@
   .menu{
     margin-top:20px;
   }
+
   .logo {
     float:left;
     margin:0 15px 0 15px;
     font-size: 1.5em;
+  }
+  .logo a{
+    color:black;
+    text-decoration:none;
   }
   .pouch-logo{
     display:inline-block;
